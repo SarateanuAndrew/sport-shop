@@ -206,7 +206,6 @@ Request
 ```
 Response
 ```json
- {
   [
  {
   "title": "Title",
@@ -225,7 +224,6 @@ Response
   "token": "token"
 }
 ]
-}
 ```
 
 ## Deployment and Scaling:
