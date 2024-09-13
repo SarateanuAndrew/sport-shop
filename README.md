@@ -68,21 +68,165 @@ Manages the creation, updating, and deletion of training materials listed by sel
 # API Endpoints
 ## User Management Microservice Endpoints
 
-- `POST /api/users/register`: Register a new user.
-- `POST /api/users/login`: Authenticate a user.
-- `PUT /api/users/{id}`: Update user details.
+- `POST /api/users/register`: Register a new user.  
+Request
+```json
+{
+  "username": "john",
+  "password": "password",
+  "email": "email@isa.com",
+  "roles": ["ROLE_USER"]
+}
+```
+Response
+```json
+{
+ "token": "token",
+}
+```
+
+- `POST /api/users/login`: Authenticate a user.  
+Request
+```json
+{
+  "username": "john",
+  "password": "password"
+}
+```
+Response
+```json
+{
+ "token": "token",
+}
+```
 
 ## Marketplace Microservice Endpoints
 
-- `POST /api/materials`: Create a new training material post.
-- `GET /api/materials`: Get a list of all training materials.
-- `GET /api/materials/{id}`: Get details of a specific training material.
-- `DELETE /api/materials/{id}`: Delete a training material post.
-- `POST /api/orders`: Place a new order for a training material.
-- `GET /api/orders/{id}`: Get details of a specific order.
-- `GET /api/orders/user/{userId}`: Get all orders made by a specific user.
-- `PUT /api/orders/{id}`: Update the status of an order.
-- `DELETE /api/orders/{id}`: Cancel an order.
+- `POST /api/materials`: Create a new training equipment post.  
+Request
+```json
+{
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1,
+  "token": "token"
+}
+```
+Response
+```json
+{
+ "status": "ok"
+}
+```
+- `PUT /api/materials`: Update a training equipment post.  
+Request
+```json
+{
+  "id": "1",
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1,
+  "token": "token"
+}
+```
+Response
+```json
+{
+ "status": "ok"
+}
+```
+
+- `GET /api/materials`: Get a list of all training materials.  
+Request
+```json
+{
+  "token": "token"
+}
+```
+Response
+```json
+[
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+},
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+}
+]
+```
+- `GET /api/materials/{id}`: Get details of a specific training material.  
+Request
+```json
+{
+  "token": "token"
+}
+```
+Response
+```json
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+}
+```
+- `DELETE /api/materials/{id}`: Delete a training material post.  
+Request
+```json
+{
+  "token": "token"
+}
+```
+Response
+```json
+ {
+  "status": "OK"
+}
+```
+
+- `GET /api/materials/user/{userId}`: Get all orders made by a specific user.
+Request
+```json
+{
+  "token": "token"
+}
+```
+Response
+```json
+ {
+  [
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1,
+  "token": "token"
+},
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1,
+  "token": "token"
+}
+]
+}
+```
 
 ## Deployment and Scaling:
 Concerning containerization, I've chosen to use Docker. Docker allows you to package and run applications in a loosely isolated environment known as a container. Deploying and scaling are crucial for implementing microservices. For orchestration and scaling, I'll opt for Docker Compose.
