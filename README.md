@@ -23,7 +23,7 @@ The Sport Equipment Rent Platform is well-suited for a microservice architecture
    - eBay, an online marketplace for buying and selling a wide range of products, utilizes a microservices architecture. Each function on the platform—such as search, listing products, user notifications, and bidding—is managed by separate microservices. This enables eBay to handle millions of users, maintain high availability, and quickly introduce new features. The "search" and "recommendation" services can be scaled independently from other parts, like payment processing, which is a benefit your platform can also gain.
 
 ## Service Boundaries:
-![367175680-89cfd827-1c25-490d-bc9f-5839b296ca13](https://github.com/user-attachments/assets/709e0402-6d33-4a44-a848-702a2663eb8d)
+![sport-shop drawio](https://github.com/user-attachments/assets/68d20ded-1a51-4a1d-bd00-6a3abbee0c62)
 - User Management Microservice: 
 Manages user accounts, registration, authentication, and authorization. It handles user roles and permissions. Manages user profiles, including personal information, payment details, purchase history, and reviews.
 
@@ -196,7 +196,7 @@ Response
   "status": "OK"
 }
 ```
-
+# Lobby Endpoints
 - `GET /api/materials/user/{userId}`: Get all orders made by a specific user.
 Request
 ```json
@@ -212,19 +212,61 @@ Response
   "description": "Description",
   "price": 99.99,
   "category": "Metal",
-  "postedByUserId": 1,
-  "token": "token"
+  "postedByUserId": 1
 },
  {
   "title": "Title",
   "description": "Description",
   "price": 99.99,
   "category": "Metal",
-  "postedByUserId": 1,
-  "token": "token"
+  "postedByUserId": 1
 }
 ]
 ```
+# WebSocket 
+
+- ```api/equipment/{cathegory}```
+Response:
+
+```json
+  [
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+},
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+}
+]
+```
+
+- ```api/equipment/all```
+```json
+  [
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+},
+ {
+  "title": "Title",
+  "description": "Description",
+  "price": 99.99,
+  "category": "Metal",
+  "postedByUserId": 1
+}
+]
+```
+
 
 ## Deployment and Scaling:
 Concerning containerization, I've chosen to use Docker. Docker allows you to package and run applications in a loosely isolated environment known as a container. Deploying and scaling are crucial for implementing microservices. For orchestration and scaling, I'll opt for Docker Compose.
