@@ -1,0 +1,24 @@
+server:
+  port: 9898
+spring:
+  application:
+    name: sport-gateway-service
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: products-service
+            uri: lb://PRODUCTS-SERVICE
+            predicates:
+              - Path=/api/products/**
+          - id: user-management
+            uri: lb://USER-MANAGEMENT
+            predicates:
+              - Path=/api/user-management/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instances-id:${random.value}}

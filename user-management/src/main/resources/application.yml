@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: user-management
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sport-user-management
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: 8081
+  tomcat:
+    connection-timeout: 3000
+    threads:
+      max: 100 # default is 200
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instances-id:${random.value}}
+

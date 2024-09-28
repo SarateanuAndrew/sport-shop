@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: products-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sport-panda-products
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instances-id:${random.value}}
+
