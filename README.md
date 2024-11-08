@@ -270,3 +270,23 @@ Response:
 
 ## Deployment and Scaling:
 Concerning containerization, I've chosen to use Docker. Docker allows you to package and run applications in a loosely isolated environment known as a container. Deploying and scaling are crucial for implementing microservices. For orchestration and scaling, I'll opt for Docker Compose.
+
+
+# Lab 2
+## How to run new app?
+
+docker-compose -f docker-compose.yml up --build  This command run docker-compose.yml file that dockerize gateway, service-discovery and my 2 microcervices with their DB.
+
+1. Run docker-compose -f docker-compose.yml up --build  This command run docker-compose.yml file that dockerize gateway, service-discovery and my 2 microcervices with their DB.
+2. Test Endpoints with Status Endpoint Get: http://localhost:3000/books/status and http://localhost:3001/auth/status
+3. First endpoint for user creation: http://localhost:3001/auth/register (Copy token and use it in all next requests, Copy new user id)
+4. Second endpoint for book creation: http://localhost:3000/books (Change owner vatue to user id that you obtained in step 3, Copy new book id)
+5. Third endpoint for checking if book is available and rent it: http://localhost:3001/auth/rent/:bookId (Use book id that you obtained at step 4)
+
+## New Diagram:
+
+
+
+## My new technologies
+
+In my project, I’ll implement a robust microservices architecture that ensures high availability, reliability, and efficient data management. To maintain Service High Availability, I’ll use load balancers and failover strategies, along with a Circuit Breaker to prevent overloading and quickly detect failing services. For caching, Consistent Hashing will ensure balanced data distribution, and Cache High Availability will provide redundancy so data access remains fast and uninterrupted. To handle complex, distributed processes, I’ll rely on Two-Phase Commits for transactional consistency and Long-Running Saga Transactions for complex workflows. Database Replication with Failover will add redundancy, allowing the system to switch seamlessly to a backup in case of database issues. I’ll use the ELK Stack (Elasticsearch, Logstash, and Kibana) for centralized logging and analysis, making it easy to detect performance bottlenecks or errors. Finally, a Data Warehouse will store historical data, enabling detailed analysis for insights and decision-making. Together, these technologies create a resilient, scalable infrastructure capable of supporting high-performance applications.
