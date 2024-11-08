@@ -278,15 +278,13 @@ Concerning containerization, I've chosen to use Docker. Docker allows you to pac
 docker-compose -f docker-compose.yml up --build  This command run docker-compose.yml file that dockerize gateway, service-discovery and my 2 microcervices with their DB.
 
 1. Run docker-compose -f docker-compose.yml up --build  This command run docker-compose.yml file that dockerize gateway, service-discovery and my 2 microcervices with their DB.
-2. Test Endpoints with Status Endpoint Get: http://localhost:3000/books/status and http://localhost:3001/auth/status
-3. First endpoint for user creation: http://localhost:3001/auth/register (Copy token and use it in all next requests, Copy new user id)
-4. Second endpoint for book creation: http://localhost:3000/books (Change owner vatue to user id that you obtained in step 3, Copy new book id)
-5. Third endpoint for checking if book is available and rent it: http://localhost:3001/auth/rent/:bookId (Use book id that you obtained at step 4)
+2. Test Endpoints with Status Endpoint Get: http://localhost:8081/actuator/health and http://localhost:8080/actuator/health.
+3. First endpoint for client creation: http://localhost:8081/api/client/save (add request body).
+4. Second endpoint for sport material creation: http://localhost:8080/materials/save (Add material request object to body).
+5. Third endpoint for assign the material to user http://localhost:8081/api/client/1/1 (the numbers represent the ids of client and material)
 
 ## New Diagram:
 ![sport-shop drawio (1)](https://github.com/user-attachments/assets/580902eb-2498-4a21-98f1-8816c79f95b3)
-
-
 
 ## My new technologies
 
