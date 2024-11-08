@@ -284,6 +284,7 @@ docker-compose -f docker-compose.yml up --build  This command run docker-compose
 5. Third endpoint for checking if book is available and rent it: http://localhost:3001/auth/rent/:bookId (Use book id that you obtained at step 4)
 
 ## New Diagram:
+![sport-shop drawio (1)](https://github.com/user-attachments/assets/580902eb-2498-4a21-98f1-8816c79f95b3)
 
 
 
